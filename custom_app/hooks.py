@@ -10,12 +10,22 @@ app_license = "mit"
 
 # required_apps = []
 
-
 doc_events = {
     "Inpatient Record": {
-        # "after_insert": "custom_app.custom_app.inpatient.create_empty_sales_invoice",
-        "validate": "custom_app.custom_app.inpatient_handler.create_lab_test_or_medication_or_procedure"
-    }
+        "validate": "custom_app.custom_app.inpatient_handler.create_services"
+    },
+    "Patient": {
+        "validate": "custom_app.custom_app.inpatient.create_sales_invoice_on_patient_creation"
+    },
+    "Lab Test": {
+        "on_submit": "custom_app.custom_app.sales_invoice_services.create_sales_invoice_for_lab_test"
+        },
+    "Medication Request": {
+        "on_submit": "custom_app.custom_app.sales_invoice_services.create_sales_invoice_for_medication"
+        },
+    "Clinical Procedure": {
+        "on_submit": "custom_app.custom_app.sales_invoice_services.create_sales_invoice_for_procedure"
+        },
 }
 
 
