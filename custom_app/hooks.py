@@ -1,3 +1,5 @@
+import frappe
+
 app_name = "custom_app"
 app_title = "Custom App"
 app_publisher = "Mortatha Mohammed"
@@ -26,8 +28,10 @@ doc_events = {
     "Clinical Procedure": {
         "on_submit": "custom_app.custom_app.sales_invoice_services.create_sales_invoice_for_procedure"
         },
+    "Patient Encounter": {
+        "on_submit": "custom_app.custom_app.sales_invoice_services.create_sales_invoice_for_procedure"
+        },
 }
-
 
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
